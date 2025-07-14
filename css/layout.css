@@ -17,7 +17,7 @@ border-radius: 4px;
 margin-bottom: 20px;
 }
 /* タスク追加セクション */
-.task-add {
+.task-add form{
 display: flex;
 align-items: center;
 gap: 8px;
@@ -169,7 +169,7 @@ margin-bottom: 8px;
     font-size: 13px;
   }
 }
-/* タブレット向け（画面幅 601px ～ 1024px） */
+/* タブレット向け（画面幅 601px ～ 1024px）
 @media (min-width: 601px) and (max-width: 1024px) {
 body {
     padding: 20px;
@@ -195,7 +195,7 @@ body {
   }
 }
 /* PC向け（画面幅 1025px 以上） */
-@media (min-width: 1025px) {
+/* @media (min-width: 1025px) {
     body {
     max-width: 800px;
     padding: 24px;
@@ -219,4 +219,4 @@ body {
   .task-info {
     font-size: 16px;
   }
-}
+} */
