@@ -1,25 +1,36 @@
 // src/components/TaskAdd.jsx
 import React, { useState } from 'react';
 const TaskAdd = ({ onAddTask }) => {
+
     // inputValueなどの状態変数で、useStateを定義
-    let [inputValue, setInputValue] = useState("");
-    
+    const [inputValue, setInputValue] = useState("");
+    //入力チェックuseStateを定義
+    const [error, setError] = useState("");
+
     const handleSubmit = (e) => {
-        // preventDefault()を使って、ページリロード防止
+        // ページリロード防止
         e.preventDefault();
         // 空のタスク入力防止
         if(inputValue.trim() === ""){
+            setError("タスクを入力してください。");
             return;
         }
-        // onAddTaskを呼び出す記載など
-        onAddTask(inputValue);
+        
+        // 重複タスク入力防止
+        const isDuplicate = onAddTask(inputValue.trim());
+        if(!isDuplicate){
+            setError("同じタスクがすでに存在しています。");
+            return;
+        }
+        //エラーがなければ、リセット
+        setError("");
         // 入力欄のリセット
         setInputValue("");
     };
     return (
         <section className="task-add">
             <form onSubmit={handleSubmit}>
-                {/* 入力欄＋追加ボタンの記述 */}
+                {/* 入力欄＋追加ボタン*/}
                 <input 
                 type="text" 
                 id="task-input" 
@@ -27,6 +38,7 @@ const TaskAdd = ({ onAddTask }) => {
                 maxLength="50" 
                 value={inputValue} onChange={(e) => setInputValue(e.target.value)}></input>
                 <button type="submit" id="add-btn">追加</button>
+                {error && <p className='error-msg'>{error}</p>}
             </form>
         </section>
     );
