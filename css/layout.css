@@ -17,7 +17,7 @@ border-radius: 4px;
 margin-bottom: 20px;
 }
 /* タスク追加セクション */
-.task-add form{
+.task-add {
 display: flex;
 align-items: center;
 gap: 8px;
